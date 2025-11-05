@@ -236,6 +236,7 @@ ABDQ<T>::ABDQ(ABDQ&& other) noexcept {
 template <typename T>
 ABDQ<T>& ABDQ<T>::operator=(ABDQ<T>&& rhs) noexcept {
     if (&rhs == this) return *this;
+    delete[] data_;
     capacity_ = rhs.capacity_;
     size_ = rhs.size_;
     data_ = rhs.data_;

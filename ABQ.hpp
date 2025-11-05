@@ -173,6 +173,7 @@ ABQ<T>::ABQ(ABQ&& other) noexcept {
 template <typename T>
 ABQ<T>& ABQ<T>::operator=(ABQ<T>&& rhs) noexcept {
     if (&rhs == this) return *this;
+    delete[] array_;
     capacity_ = rhs.capacity_;
     curr_size_ = rhs.curr_size_;
     array_ = rhs.array_;

@@ -44,36 +44,26 @@ private:
     size_t curr_size_;
     T* array_;
     static constexpr size_t scale_factor_ = 2;
-
-    template <typename... A>
-    void debug(A... args) const {
-        std::cout << this << " ";
-        (std::cout << ... << args) << std::endl;
-    }
 };
 
 // Functions that *do* things
 template <typename T>
 [[nodiscard]] size_t ABS<T>::getSize() const noexcept {
-    debug("getSize");
     return curr_size_;
 }
 
 template <typename T>
 [[nodiscard]] size_t ABS<T>::getMaxCapacity() const noexcept {
-    debug("getMaxCapacity");
     return capacity_;
 }
 
 template <typename T>
 [[nodiscard]] T* ABS<T>::getData() const noexcept {
-    debug("getData");
     return array_;
 }
 
 template <typename T>
 void ABS<T>::push(const T& data) {
-    debug("push", data);
     if (curr_size_ == capacity_) {
         T* new_array = new T[capacity_ * scale_factor_];
         for (size_t i = 0; i < curr_size_; i++) {
@@ -89,9 +79,7 @@ void ABS<T>::push(const T& data) {
 
 template <typename T>
 T ABS<T>::peek() const {
-    debug("peek");
     if (curr_size_ == 0) {
-        debug("peekErr");
         throw std::runtime_error("Cannot peek at empty stack");
     }
     return array_[curr_size_ - 1];
@@ -99,9 +87,7 @@ T ABS<T>::peek() const {
 
 template <typename T>
 T ABS<T>::pop() {
-    debug("pop");
     if (curr_size_ == 0) {
-        debug("popErr");
         throw std::runtime_error("Cannot pop empty stack");
     }
     T res = peek();
@@ -135,7 +121,6 @@ void ABS<T>::PrintReverse() const {
 // Big 5 + Parameterized Constructor
 template <typename T>
 ABS<T>::ABS() {
-    debug("cstrDef");
     capacity_ = 1;
     curr_size_ = 0;
     array_ = new T[1];
@@ -143,7 +128,6 @@ ABS<T>::ABS() {
 
 template <typename T>
 ABS<T>::ABS(const size_t capacity) {
-    debug("cstrParam", capacity);
     capacity_ = capacity;
     curr_size_ = 0;
     array_ = new T[capacity];
@@ -151,7 +135,6 @@ ABS<T>::ABS(const size_t capacity) {
 
 template <typename T>
 ABS<T>::ABS(const ABS& other) {
-    debug("cstrCopy", &other);
     T* array = new T[other.capacity_];
     for (size_t i = 0; i < other.curr_size_; i++) {
         array[i] = other.array_[i];
@@ -163,7 +146,6 @@ ABS<T>::ABS(const ABS& other) {
 
 template <typename T>
 ABS<T>& ABS<T>::operator=(const ABS<T>& rhs) {
-    debug("asmCopy", &rhs);
     if (&rhs == this) return *this;
     T* array = new T[rhs.capacity_];
     for (size_t i = 0; i < rhs.curr_size_; i++) {
@@ -178,7 +160,6 @@ ABS<T>& ABS<T>::operator=(const ABS<T>& rhs) {
 
 template <typename T>
 ABS<T>::ABS(ABS&& other) noexcept {
-    debug("cstrMove", &other);
     capacity_ = other.capacity_;
     curr_size_ = other.curr_size_;
     array_ = other.array_;
@@ -189,8 +170,8 @@ ABS<T>::ABS(ABS&& other) noexcept {
 
 template <typename T>
 ABS<T>& ABS<T>::operator=(ABS<T>&& rhs) noexcept {
-    debug("asmMove", &rhs);
     if (&rhs == this) return *this;
+    delete[] array_;
     capacity_ = rhs.capacity_;
     curr_size_ = rhs.curr_size_;
     array_ = rhs.array_;
@@ -202,7 +183,6 @@ ABS<T>& ABS<T>::operator=(ABS<T>&& rhs) noexcept {
 
 template <typename T>
 ABS<T>::~ABS() noexcept {
-    debug("dstr");
     delete[] array_;
     array_ = nullptr;
     capacity_ = 0;

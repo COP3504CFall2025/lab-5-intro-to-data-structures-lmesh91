@@ -21,13 +21,15 @@
 */
 
 int main() {
-    ABS<int> m;
-    m.push(1);
-    m.push(2);
-    m.push(3);
-    m.pop();
-    m.pop();
-    m.pop();
+    // Emulating the test case with the error
+    ABS<int> a;
+    a.push(5);
+    a.push(10);
+    a.push(15);
+    ABS<int> b;
+    b.push(200);
+    b = std::move(a);
+    // UH OH
     return 0;
 }
 
