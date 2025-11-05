@@ -5,9 +5,9 @@
 #include "ABS.hpp"
 #include "Interfaces.hpp"
 #include "LinkedList.hpp"
-//#include "LLDQ.hpp"
-//#include "LLQ.hpp"
-//#include "LLS.hpp"
+#include "LLDQ.hpp"
+#include "LLQ.hpp"
+#include "LLS.hpp"
 #include <iostream>
 
 /*
