@@ -1,9 +1,9 @@
 #ifdef MAIN
 
 //#include "ABDQ.hpp"
-//#include "ABQ.hpp"
-//#include "ABS.hpp"
-//#include "Interfaces.hpp"
+#include "ABQ.hpp"
+#include "ABS.hpp"
+#include "Interfaces.hpp"
 #include "LinkedList.hpp"
 //#include "LLDQ.hpp"
 //#include "LLQ.hpp"
@@ -19,14 +19,15 @@
 */
 
 int main() {
-    LinkedList<int> example;
-    example.addHead(1);
-    example.addHead(2);
-    example.addTail(3);
-    example.removeHead();
-    example.removeTail();
+    ABQ<int> example;
+    example.enqueue(1);
+    example.enqueue(2);
+    example.dequeue();
+    example.enqueue(3);
+    std::cout << example.peek() << std::endl;
     example.printForward();
-    LinkedList<int> example2 = example;
+    example.dequeue();
+    example.dequeue();
     return 0;
 }
 
