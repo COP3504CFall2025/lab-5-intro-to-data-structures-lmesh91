@@ -20,11 +20,9 @@
 */
 
 int main() {
-    ABDQ<int> example(4);
-    ABDQ<int> e2 = example;
-    ABDQ<int> e3 = std::move(e2);
-    ABDQ<int> e4(e3);
-    ABDQ<int> e5(std::move(e4));
+    ABS<int> m;
+    m.push(1);
+    std::cout << m.getSize() << std::endl;
     return 0;
 }
 

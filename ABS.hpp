@@ -49,21 +49,25 @@ private:
 // Functions that *do* things
 template <typename T>
 [[nodiscard]] size_t ABS<T>::getSize() const noexcept {
+    std::cerr << "getSize" << std::endl;
     return curr_size_;
 }
 
 template <typename T>
 [[nodiscard]] size_t ABS<T>::getMaxCapacity() const noexcept {
+    std::cerr << "getMaxCapacity" << std::endl;
     return capacity_;
 }
 
 template <typename T>
 [[nodiscard]] T* ABS<T>::getData() const noexcept {
+    std::cerr << "getData" << std::endl;
     return array_;
 }
 
 template <typename T>
 void ABS<T>::push(const T& data) {
+    std::cerr << "push " << data << std::endl;
     if (curr_size_ == capacity_) {
         T* new_array = new T[capacity_ * scale_factor_];
         for (size_t i = 0; i < curr_size_; i++) {
@@ -79,6 +83,7 @@ void ABS<T>::push(const T& data) {
 
 template <typename T>
 T ABS<T>::peek() const {
+    std::cerr << "peek" << std::endl;
     if (curr_size_ == 0) {
         throw std::runtime_error("Cannot peek at empty stack");
     }
@@ -87,6 +92,7 @@ T ABS<T>::peek() const {
 
 template <typename T>
 T ABS<T>::pop() {
+    std::cerr << "pop" << std::endl;
     if (curr_size_ == 0) {
         throw std::runtime_error("Cannot pop empty stack");
     }
@@ -121,6 +127,7 @@ void ABS<T>::PrintReverse() const {
 // Big 5 + Parameterized Constructor
 template <typename T>
 ABS<T>::ABS() {
+    std::cerr << "consDefault" << std::endl;
     capacity_ = 1;
     curr_size_ = 0;
     array_ = new T[1];
@@ -128,6 +135,7 @@ ABS<T>::ABS() {
 
 template <typename T>
 ABS<T>::ABS(const size_t capacity) {
+    std::cerr << "consParameter " << capacity << std::endl;
     capacity_ = capacity;
     curr_size_ = 0;
     array_ = new T[capacity];
@@ -135,6 +143,7 @@ ABS<T>::ABS(const size_t capacity) {
 
 template <typename T>
 ABS<T>::ABS(const ABS& other) {
+    std::cerr << "consCopy" << std::endl;
     T* array = new T[other.capacity_];
     for (size_t i = 0; i < other.curr_size_; i++) {
         array[i] = other.array_[i];
@@ -146,6 +155,7 @@ ABS<T>::ABS(const ABS& other) {
 
 template <typename T>
 ABS<T>& ABS<T>::operator=(const ABS<T>& rhs) {
+    std::cerr << "eqCopy" << std::endl;
     if (&rhs == this) return *this;
     T* array = new T[rhs.capacity_];
     for (size_t i = 0; i < rhs.curr_size_; i++) {
@@ -160,6 +170,7 @@ ABS<T>& ABS<T>::operator=(const ABS<T>& rhs) {
 
 template <typename T>
 ABS<T>::ABS(ABS&& other) noexcept {
+    std::cerr << "consMove" << std::endl;
     capacity_ = other.capacity_;
     curr_size_ = other.curr_size_;
     array_ = other.array_;
@@ -170,6 +181,7 @@ ABS<T>::ABS(ABS&& other) noexcept {
 
 template <typename T>
 ABS<T>& ABS<T>::operator=(ABS<T>&& rhs) noexcept {
+    std::cerr << "eqMove" << std::endl;
     if (&rhs == this) return *this;
     capacity_ = rhs.capacity_;
     curr_size_ = rhs.curr_size_;
@@ -182,6 +194,7 @@ ABS<T>& ABS<T>::operator=(ABS<T>&& rhs) noexcept {
 
 template <typename T>
 ABS<T>::~ABS() noexcept {
+    std::cerr << "dstr" << std::endl;
     delete[] array_;
     array_ = nullptr;
     capacity_ = 0;
