@@ -1,6 +1,6 @@
 #ifdef MAIN
 
-//#include "ABDQ.hpp"
+#include "ABDQ.hpp"
 #include "ABQ.hpp"
 #include "ABS.hpp"
 #include "Interfaces.hpp"
@@ -19,15 +19,21 @@
 */
 
 int main() {
-    ABQ<int> example;
-    example.enqueue(1);
-    example.enqueue(2);
-    example.dequeue();
-    example.enqueue(3);
-    std::cout << example.peek() << std::endl;
+    ABDQ<int> example;
+    example.pushFront(1);
+    example.pushBack(2);
+    example.pushFront(3);
+    example.pushBack(4);
+    example.pushFront(5);
+    example.pushBack(6);
+    example.pushFront(7);
     example.printForward();
-    example.dequeue();
-    example.dequeue();
+    std::cout << "-----------" << std::endl;
+    example.popBack();
+    example.popBack();
+    example.popBack();
+    example.popBack();
+    example.printForward();
     return 0;
 }
 
