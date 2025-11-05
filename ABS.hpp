@@ -36,8 +36,8 @@ public:
 
     T pop() override;
 
-	void printForward() const;
-	void printReverse() const;
+	void PrintForward() const;
+	void PrintReverse() const;
 
 private:
     size_t capacity_;
@@ -91,18 +91,27 @@ T ABS<T>::pop() {
         throw std::runtime_error("Cannot pop empty stack");
     }
     curr_size_--;
+    if (curr_size_ <= capacity_ / scale_factor_) {
+        T* new_array = new T[capacity_ / scale_factor_];
+        for (size_t i = 0; i < curr_size_; i++) {
+            new_array[i] = array_[i];
+        }
+        delete[] array_;
+        array_ = new_array;
+        capacity_ /= scale_factor_;
+    }
     return array_[curr_size_];
 }
 
 template <typename T>
-void ABS<T>::printForward() const {
+void ABS<T>::PrintForward() const {
     for (size_t i = 0; i < curr_size_; i++) {
         std::cout << array_[i] << std::endl;
     }
 }
 
 template <typename T>
-void ABS<T>::printReverse() const {
+void ABS<T>::PrintReverse() const {
     for (size_t i = curr_size_ - 1; i >= 0; i--) {
         std::cout << array_[i] << std::endl;
     }

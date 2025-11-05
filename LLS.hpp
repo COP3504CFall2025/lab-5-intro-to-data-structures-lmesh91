@@ -27,8 +27,8 @@ public:
     //Getters
     std::size_t getSize() const noexcept override;
 
-	void printForward() const;
-	void printReverse() const;
+	void PrintForward() const;
+	void PrintReverse() const;
 };
 
 template <typename T>
@@ -36,7 +36,7 @@ LLS<T>::LLS() : list() {}
 
 template <typename T>
 void LLS<T>::push(const T& item) {
-    list.addHead(item);
+    list.AddHead(item);
 }
 
 template <typename T>
@@ -45,7 +45,7 @@ T LLS<T>::pop() {
         throw std::runtime_error("cannot pop empty stack");
     }
     T res = list.getHead()->data;
-    list.removeHead();
+    list.RemoveHead();
     return res;
 };
 
@@ -63,11 +63,11 @@ std::size_t LLS<T>::getSize() const noexcept {
 }
 
 template <typename T>
-void LLS<T>::printForward() const {
-    list.printForward();
+void LLS<T>::PrintForward() const {
+    list.PrintForward();
 }
 
 template <typename T>
-void LLS<T>::printReverse() const {
-    list.printReverse();
+void LLS<T>::PrintReverse() const {
+    list.PrintReverse();
 }

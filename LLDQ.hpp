@@ -32,8 +32,8 @@ public:
     // Getter
     std::size_t getSize() const noexcept override;
 
-	void printForward() const;
-	void printReverse() const;
+	void PrintForward() const;
+	void PrintReverse() const;
 };
 
 template <typename T>
@@ -41,12 +41,12 @@ LLDQ<T>::LLDQ() : list() {}
 
 template <typename T>
 void LLDQ<T>::pushFront(const T& item) {
-    list.addHead(item);
+    list.AddHead(item);
 }
 
 template <typename T>
 void LLDQ<T>::pushBack(const T& item) {
-    list.addTail(item);
+    list.AddTail(item);
 }
 
 template <typename T>
@@ -55,7 +55,7 @@ T LLDQ<T>::popFront() {
         throw std::runtime_error("cannot pop empty dequeue");
     }
     T res = list.getHead()->data;
-    list.removeHead();
+    list.RemoveHead();
     return res;
 };
 
@@ -65,7 +65,7 @@ T LLDQ<T>::popBack() {
         throw std::runtime_error("cannot pop empty dequeue");
     }
     T res = list.getTail()->data;
-    list.removeTail();
+    list.RemoveTail();
     return res;
 };
 
@@ -91,11 +91,11 @@ std::size_t LLDQ<T>::getSize() const noexcept {
 }
 
 template <typename T>
-void LLDQ<T>::printForward() const {
-    list.printForward();
+void LLDQ<T>::PrintForward() const {
+    list.PrintForward();
 }
 
 template <typename T>
-void LLDQ<T>::printReverse() const {
-    list.printReverse();
+void LLDQ<T>::PrintReverse() const {
+    list.PrintReverse();
 }

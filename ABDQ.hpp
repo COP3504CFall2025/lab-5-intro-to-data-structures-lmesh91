@@ -51,8 +51,8 @@ public:
     // Getters
     size_t getSize() const noexcept override;
 
-	void printForward() const;
-	void printReverse() const;
+	void PrintForward() const;
+	void PrintReverse() const;
 };
 
 // Helper functions
@@ -75,13 +75,13 @@ template <typename T>
 }
 
 template <typename T>
-void ABDQ<T>::printForward() const {
+void ABDQ<T>::PrintForward() const {
     for (size_t i = 0; i < size_; i++) {
         std::cout << data_[(i+front_)%capacity_] << std::endl;
     }
 }
 template <typename T>
-void ABDQ<T>::printReverse() const {
+void ABDQ<T>::PrintReverse() const {
     for (size_t i = size_ - 1; i >= 0; i++) {
         std::cout << data_[(i+front_)%capacity_] << std::endl;
     }
@@ -138,7 +138,7 @@ const T& ABDQ<T>::back() const {
     if (size_ == 0) {
         throw std::runtime_error("Cannot peek at empty dequeue");
     }
-    return data_[back_];
+    return data_[(back_+capacity_-1)%capacity_]; // Cannot use p_dec(back_) here
 }
 
 template <typename T>

@@ -27,13 +27,13 @@ int main() {
     example.pushFront(5);
     example.pushBack(6);
     example.pushFront(7);
-    example.printForward();
+    example.PrintForward();
     std::cout << "-----------" << std::endl;
     example.popBack();
     example.popBack();
     example.popBack();
     example.popBack();
-    example.printForward();
+    example.PrintForward();
     return 0;
 }
 

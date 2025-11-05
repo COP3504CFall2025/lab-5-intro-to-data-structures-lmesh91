@@ -25,8 +25,8 @@ public:
     // Getter
     std::size_t getSize() const noexcept override;
 
-	void printForward() const;
-	void printReverse() const;
+	void PrintForward() const;
+	void PrintReverse() const;
 };
 
 template <typename T>
@@ -34,7 +34,7 @@ LLQ<T>::LLQ() : list() {}
 
 template <typename T>
 void LLQ<T>::enqueue(const T& item) {
-    list.addTail(item);
+    list.AddTail(item);
 }
 
 template <typename T>
@@ -43,7 +43,7 @@ T LLQ<T>::dequeue() {
         throw std::runtime_error("cannot pop empty queue");
     }
     T res = list.getHead()->data;
-    list.removeHead();
+    list.RemoveHead();
     return res;
 };
 
@@ -61,11 +61,11 @@ std::size_t LLQ<T>::getSize() const noexcept {
 }
 
 template <typename T>
-void LLQ<T>::printForward() const {
-    list.printForward();
+void LLQ<T>::PrintForward() const {
+    list.PrintForward();
 }
 
 template <typename T>
-void LLQ<T>::printReverse() const {
-    list.printReverse();
+void LLQ<T>::PrintReverse() const {
+    list.PrintReverse();
 }
