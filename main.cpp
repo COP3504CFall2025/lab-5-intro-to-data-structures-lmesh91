@@ -10,6 +10,7 @@
 #include "LLS.hpp"
 #include <iostream>
 #include <utility>
+#include <stdexcept>
 
 /*
     - LEAVE THE IFDEF GUARDS TO KEEP YOUR MAIN WITHOUT CONFLICTING WITH GRADESCOPE!
@@ -22,7 +23,11 @@
 int main() {
     ABS<int> m;
     m.push(1);
-    std::cout << m.getSize() << std::endl;
+    m.push(2);
+    m.push(3);
+    m.pop();
+    m.pop();
+    m.pop();
     return 0;
 }
 
