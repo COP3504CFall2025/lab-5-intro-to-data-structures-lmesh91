@@ -16,6 +16,10 @@ public:
 	void PrintForward() const;
 	void PrintReverse() const;
 
+	// love these test cases
+	void printForward() const;
+	void printReverse() const;
+
 	// Accessors
 	[[nodiscard]] unsigned int getCount() const;
 	Node<T>* getHead();
@@ -69,6 +73,16 @@ void LinkedList<T>::PrintReverse() const {
 		std::cout << curr->data << std::endl;
 		curr = curr->prev;
 	}
+}
+
+template <typename T>
+void LinkedList<T>::printForward() const {
+	PrintForward();
+}
+
+template <typename T>
+void LinkedList<T>::printReverse() const {
+	PrintReverse();
 }
 
 // Accessors

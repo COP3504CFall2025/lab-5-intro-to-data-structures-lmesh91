@@ -90,8 +90,9 @@ T ABS<T>::pop() {
     if (curr_size_ == 0) {
         throw std::runtime_error("Cannot pop empty stack");
     }
+    T res = peek();
     curr_size_--;
-    if (curr_size_ <= capacity_ / scale_factor_) {
+    if (curr_size_ < capacity_ / scale_factor_) {
         T* new_array = new T[capacity_ / scale_factor_];
         for (size_t i = 0; i < curr_size_; i++) {
             new_array[i] = array_[i];
@@ -100,7 +101,7 @@ T ABS<T>::pop() {
         array_ = new_array;
         capacity_ /= scale_factor_;
     }
-    return array_[curr_size_];
+    return res;
 }
 
 template <typename T>

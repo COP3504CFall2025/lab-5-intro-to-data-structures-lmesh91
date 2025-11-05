@@ -9,6 +9,7 @@
 #include "LLQ.hpp"
 #include "LLS.hpp"
 #include <iostream>
+#include <utility>
 
 /*
     - LEAVE THE IFDEF GUARDS TO KEEP YOUR MAIN WITHOUT CONFLICTING WITH GRADESCOPE!
@@ -19,21 +20,11 @@
 */
 
 int main() {
-    ABDQ<int> example;
-    example.pushFront(1);
-    example.pushBack(2);
-    example.pushFront(3);
-    example.pushBack(4);
-    example.pushFront(5);
-    example.pushBack(6);
-    example.pushFront(7);
-    example.PrintForward();
-    std::cout << "-----------" << std::endl;
-    example.popBack();
-    example.popBack();
-    example.popBack();
-    example.popBack();
-    example.PrintForward();
+    ABDQ<int> example(4);
+    ABDQ<int> e2 = example;
+    ABDQ<int> e3 = std::move(e2);
+    ABDQ<int> e4(e3);
+    ABDQ<int> e5(std::move(e4));
     return 0;
 }
 

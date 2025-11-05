@@ -94,7 +94,7 @@ T ABQ<T>::dequeue() {
         array_[i] = array_[i+1];
     }
     curr_size_--;
-    if (curr_size_ <= capacity_ / scale_factor_) {
+    if (curr_size_ < capacity_ / scale_factor_) {
         T* new_array = new T[capacity_ / scale_factor_];
         for (size_t i = 0; i < curr_size_; i++) {
             new_array[i] = array_[i];
